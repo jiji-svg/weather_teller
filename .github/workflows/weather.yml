@@ -1,0 +1,32 @@
+name: Send Weather to Slack
+
+on:
+  schedule:
+    - cron: '0 23 * * *'  # 오전 8시 KST
+    - cron: '0 5 * * *'   # 오후 2시 KST
+    - cron: '0 11 * * *'  # 오후 8시 KST
+  workflow_dispatch:  # 수동 실행도 가능하게
+
+jobs:
+  run-weather-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run weather bot
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      run: |
+        python send_weather_to_slack.py
