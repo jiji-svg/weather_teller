@@ -14,8 +14,8 @@ cities['Daejeon'] = {'lat': 36.3504,
 # url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric'
 
 current_weather_url = (
-    f'https://api.openweathermap.org/data/2.5/weather?lat={cities["Daejeon"]['lat']}&lon={cities["Daejeon"]['lon']}&appid={API_KEY}&units=metric'
-)
+    f'https://api.openweathermap.org/data/2.5/weather?lat={cities["Daejeon"]["lat"]}&lon={cities["Daejeon"]["lon"]}&appid={API_KEY}&units=metric'
+    )
 weather_description_map = {
     # ☀️ 맑음/햇빛
     "clear sky": "맑음",
