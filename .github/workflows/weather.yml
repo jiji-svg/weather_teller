@@ -29,4 +29,4 @@ jobs:
         API_KEY: ${{ secrets.API_KEY }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       run: |
-        python send_weather_to_slack.py
+        python weather_webhook.py
