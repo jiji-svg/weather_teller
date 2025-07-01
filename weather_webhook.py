@@ -2,6 +2,7 @@ import requests
 import os
 import datetime
 from dotenv import load_dotenv
+from zoneinfo import ZoneInfo
 
 load_dotenv()
 
@@ -79,7 +80,7 @@ def get_weather():
     response=requests.get(current_weather_url)
     if response.status_code == 200:
         data = response.json()
-        now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M") # 현재 시간
+        now = datetime.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M") # 현재 시간
         city = data['name'] # 도시 이름
         weather = data['weather'][0]['description'] # 날씨
         korean_weather = weather_description_map.get(weather,  weather)
